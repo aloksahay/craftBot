@@ -7,7 +7,7 @@ import QuickPoseSwiftUI
 struct TrackBodyPoseView: View {
 
     private var quickPose = QuickPose(sdkKey: CraftEnvironmentVariables.quickPoseSDKKey)
-    private let videoDataManager = VideoDataManager(nillionCluster: [:]) // Empty dictionary as placeholder for now
+    private let videoDataManager = VideoDataManager()
     
     @State private var overlayImage: UIImage?
     @State private var showOverlay = true

@@ -11,8 +11,8 @@ public class Web3RPC: ObservableObject {
     public var address: EthereumAddress
     private var account: EthereumAccount
     private var latestBlock = 0
-    private var chainID = 1
-    private var RPC_URL = ""
+    private var chainID = 421614
+    private var RPC_URL = "arbitrum-sepolia-rpc.publicnode.com"
     
     @Published public var balance: Double = -1
     @Published public var signedMessageHashString = ""
@@ -86,10 +86,10 @@ public class Web3RPC: ObservableObject {
         }
     }
     
-    public func sendTransaction()  {
+    public func sendTransaction(ethAddress: String)  {
         Task{
             do {
-                let val = try await transferAsset(sendTo: "0x24BfD1c2D000EC276bb2b6af38C47390Ae6B5FF0", amount: 0.0001, maxTip: 0.0001)
+                let val = try await transferAsset(sendTo: ethAddress, amount: 0.0001, maxTip: 0.0001)
                 self.sentTransactionID = val
                 print(val)
             } catch let error {

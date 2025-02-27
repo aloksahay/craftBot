@@ -43,12 +43,13 @@ struct UserDetailView: View {
                     } label: {
                         Label("Sign Transaction", systemImage: "pencil.circle")
                     }
+                    
                     if !web3RPC.signedMessageHashString.isEmpty {
                         Text("\(web3RPC.signedMessageHashString)")
                     }
 
                     Button {
-                        web3RPC.sendTransaction()
+                        web3RPC.sendTransaction(ethAddress: "0x")
                     } label: {
                         Label("Send Transaction", systemImage: "paperplane.circle")
                     }

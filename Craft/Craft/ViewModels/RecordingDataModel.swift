@@ -15,6 +15,23 @@ struct RecordingData: Codable {
         case timestamp
         case frames
     }
+    
+    func toJSON() throws -> [String: Any] {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        let data = try encoder.encode(self)
+        guard let dict = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+            throw NSError(domain: "JSONError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to convert to dictionary"])
+        }
+        return dict
+    }
+    
+    static func fromJSON(_ json: [String: Any]) throws -> RecordingData {
+        let data = try JSONSerialization.data(withJSONObject: json)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        return try decoder.decode(RecordingData.self, from: data)
+    }
 }
 
 struct FrameData: Codable {

@@ -4,8 +4,8 @@ import SwiftUI
 struct CraftApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView(vm: Web3AuthViewModel())
-            TrackBodyPoseView()
+            ContentView(vm: Web3AuthViewModel())
+//            TrackBodyPoseView()
 //            UploadVideoView()
         }
     }
